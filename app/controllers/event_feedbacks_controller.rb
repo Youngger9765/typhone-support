@@ -56,7 +56,7 @@ class EventFeedbacksController < ApplicationController
 	end
 
 	def feedback_params
-  		params.require(:feedback).permit(:content)
+  		params.require(:feedback).permit(:content, :name)
   	end
 
 end

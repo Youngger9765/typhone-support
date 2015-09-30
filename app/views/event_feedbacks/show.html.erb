@@ -1,10 +1,12 @@
 <h2><%= @event.name  %></h2>
 
-<p>
-	
-	hello, this is my feedback,
+    <p>
+	hello, I am <%= @feedback.name%>
+	</p>
+	<p>
+	this is my feedback,
 	<%= @feedback.content %>
+	</p>
 
-</p>
 
 <%= link_to "index", event_feedbacks_path(@event) %>

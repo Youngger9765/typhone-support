@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   
   resources :events do
     resources :feedbacks, :controller => "event_feedbacks"
+  
+    collection do
+      get :info
+    end
+
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
