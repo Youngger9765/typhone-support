@@ -8,6 +8,7 @@
 <tr>
 	<td>Title</td>
 	<td>Post Time</td>
+	<td>Feedback</td>
 	<td>Control</td>
 
 </tr>
@@ -26,11 +27,15 @@
 
 	</td>
 
+	<td>
+		<%= link_to "Feedback", event_feedbacks_path(e), :class => "btn btn-primary" %>
+	</td>
+
     <td>
 
 		<%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
 
-		<%= link_to "Feedback", event_feedbacks_path(e), :class => "btn btn-primary" %>
+
 		
 		<%= link_to "Edit", events_path(:event_id => e), :class => "btn btn-default" %>
 		

@@ -1,6 +1,13 @@
 <h1>This is Feedbacks board for Event-title:<%= @event.name%></h1>
 
 <table class="table">	
+
+<tr>
+	<td>Feedbacks</td>
+	<td>Control</td>
+
+</tr>
+
 <tr>
 	<% @feedbacks.each do |fe|%>
 
@@ -24,3 +31,5 @@
 
 
 <%= link_to "New Feedback", new_event_feedback_path(@event),:class => "btn btn-primary"%>
+
+<%= link_to "Events Index", events_path(@event),:class => "btn btn-primary"%>
