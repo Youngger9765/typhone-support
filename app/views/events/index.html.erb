@@ -1,0 +1,32 @@
+<h1>Typhon Events</h1>
+
+
+
+<table class="table">
+<% @events.each do |e| %>
+  <tr>
+  	<td>
+    <%= e.name %>
+    </td>
+    <td>
+
+		<%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
+		
+		<%= link_to "Edit", edit_event_path(e), :class => "btn btn-default" %>
+		
+		<%= link_to 'Delete', event_path(e), :method => :delete,:data =>{:confirm =>"R U SURE???"}, :class => "btn btn-danger" %>
+
+  	</td>
+  </tr>
+<% end %>
+</table>
+
+<hr>
+<%= link_to 'New Event', new_event_path,:class => "btn btn-default" %> %>
+
+
+
+
+
+<%= paginate @events %>
+
