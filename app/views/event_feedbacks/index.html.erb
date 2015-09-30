@@ -1,0 +1,26 @@
+<h1>This is Feedbacks board for Event-title:<%= @event.name%></h1>
+
+<table class="table">	
+<tr>
+	<% @feedbacks.each do |fe|%>
+
+	<td>
+		<%= fe.content %>
+
+	</td>
+
+	<td>
+	<%= link_to "Show", event_feedback_path(@event, fe), :class => "btn btn-primary"%>
+
+	<%= link_to "Edit", edit_event_feedback_path(@event, fe), :class => "btn btn-default"%>
+
+		<%= link_to "Delete", event_feedback_path(@event, fe), :method =>"delete", :data => { :confirm => "Sure?"}, :class => "btn btn-danger"%>
+	
+	</td>
+</tr>
+
+<%end%>
+</table>
+
+
+<%= link_to "New Feedback", new_event_feedback_path(@event),:class => "btn btn-primary"%>

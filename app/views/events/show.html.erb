@@ -1,4 +1,10 @@
+<p> Title:
 <%= @event.name %>
+</p>
+<p>
+category:<%= @event.category.try(:name) %>
+</p>
+<p>Content:
 <%= simple_format(@event.content) %>
-
+</p>
 <p><%= link_to 'Back to index', events_path %></p>

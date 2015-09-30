@@ -2,17 +2,37 @@
 
 
 
+
+
 <table class="table">
+<tr>
+	<td>Title</td>
+	<td>Post Time</td>
+	<td>Control</td>
+
+</tr>
+
+
 <% @events.each do |e| %>
   <tr>
   	<td>
     <%= e.name %>
     </td>
+
+
+
+	<td>
+	<%= e.created_at %>
+
+	</td>
+
     <td>
 
 		<%= link_to "Show", event_path(e), :class => "btn btn-primary" %>
+
+		<%= link_to "Feedback", event_feedbacks_path(e), :class => "btn btn-primary" %>
 		
-		<%= link_to "Edit", edit_event_path(e), :class => "btn btn-default" %>
+		<%= link_to "Edit", events_path(:event_id => e), :class => "btn btn-default" %>
 		
 		<%= link_to 'Delete', event_path(e), :method => :delete,:data =>{:confirm =>"R U SURE???"}, :class => "btn btn-danger" %>
 
@@ -22,11 +42,35 @@
 </table>
 
 <hr>
-<%= link_to 'New Event', new_event_path,:class => "btn btn-default" %> %>
+<%= link_to 'New Event', events_path,:class => "btn btn-default" %> %>
 
 
 
 
 
 <%= paginate @events %>
+
+<%
+  if params[:event_id]
+    url = event_path(@event)
+  else
+    url = events_path
+  end
+%>
+
+
+<%= form_for @event, :url => url do |f| %>
+    
+	<% if @event.errors.any? %>
+      <ul>
+          <% @event.errors.full_messages.each do |m| %>
+            <li><%= m %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+	<%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%= f.submit "Submit",:class => "btn btn-primary" %>
+<% end %>
 

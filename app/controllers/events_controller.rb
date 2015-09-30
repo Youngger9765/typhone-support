@@ -3,7 +3,14 @@ class EventsController < ApplicationController
 	before_action :set_event, :only => [ :show, :edit, :update, :destroy]
 
 	def index
-  		@events = Event.page(params[:page]).per(5)
+  		@events = Event.order("id DESC").page(params[:page]).per(5)
+
+  		if params[:event_id]
+  			@event = Event.find( params[:event_id] )
+  		else
+			@event = Event.new
+  		end
+
 	end
 
 	def show
@@ -52,7 +59,7 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-	  params.require(:event).permit(:name, :description)
+	  params.require(:event).permit(:name, :description, :content, :category_id)
 	end
 
 	def set_event

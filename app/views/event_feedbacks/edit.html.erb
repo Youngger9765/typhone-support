@@ -1,0 +1,14 @@
+<h2>You Can Edit Your Feedback</h2>
+
+<%= form_for @feedback, :url => event_feedback_path(@event, @feedback), :method => :patch do |f| %>
+
+	<div class="form-group">
+		<li>Feedback	<%= f.label :content %> </li>
+		<%= f.text_area :content, :class => "form-control"%>
+	</div>
+
+	<div class="form-group">
+		<%= f.submit :class => "btn btn-primary" %>
+	</div>
+
+<% end %>

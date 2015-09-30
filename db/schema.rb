@@ -11,16 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930062441) do
+ActiveRecord::Schema.define(version: 20150930074715) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
     t.boolean  "is_public"
     t.integer  "capacity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "status"
+    t.integer  "category_id"
+  end
+
+  add_index "events", ["category_id"], name: "index_events_on_category_id"
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "status"
   end
+
+  add_index "feedbacks", ["event_id"], name: "index_feedbacks_on_event_id"
 
 end
