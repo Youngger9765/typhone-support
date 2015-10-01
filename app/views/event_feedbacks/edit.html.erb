@@ -1,6 +1,6 @@
 <h2>You Can Edit Your Feedback</h2>
 
-<%= form_for @feedback, :url => event_feedback_path(@event, @feedback), :method => :patch do |f| %>
+<%= form_for @feedback, :url => event_feedback_path(@event, @feedback) do |f| %>
 
 	<div class="form-group">
 		<li>Feedback	<%= f.label :name %> </li>

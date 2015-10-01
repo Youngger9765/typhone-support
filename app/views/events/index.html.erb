@@ -18,6 +18,10 @@
   <tr>
   	<td>
     <%= e.name %>
+    |
+    <%= e.category.try(:name) %>
+
+
     </td>
 
 
@@ -56,16 +60,7 @@
 
 <%= paginate @events %>
 
-<%
-  if params[:event_id]
-    url = event_path(@event)
-  else
-    url = events_path
-  end
-%>
-
-
-<%= form_for @event, :url => url do |f| %>
+<%= form_for @event do |f| %>
     
 	<% if @event.errors.any? %>
       <ul>
